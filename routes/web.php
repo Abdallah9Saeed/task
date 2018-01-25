@@ -14,3 +14,9 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::group(['prefix' => 'tasks'], function() {
+    Route::get('{task}/edit', 'DashboardController@edit')->name('task.edit');
+    Route::put('{task}/update', 'DashboardController@update')->name('task.update');
+    Route::delete('task/{id}', 'DashboardController@delete');
+});
